@@ -25,6 +25,8 @@ export class StoreComponent {
     }
 
 changeCategory(newCategory?: string) {
+    this.productsPerPage = 4; // added for user friendliness
+    this.selectedPage = 1; // added for user friendliness
     this.selectedCategory = newCategory;
     }
 
@@ -37,10 +39,15 @@ changePageSize(newSize: number) {
     this.changePage(1);
     }
 
-get pageNumbers(): number[] {
-    return Array(Math.ceil(this.repository
-    .getProducts(this.selectedCategory).length / this.productsPerPage))
-    .fill(0).map((x, i) => i + 1);
+// get pageNumbers(): number[] {
+//     return Array(Math.ceil(this.repository
+//     .getProducts(this.selectedCategory).length / this.productsPerPage))
+//     .fill(0).map((x, i) => i + 1);
+//     }
+
+get pageCount(): number {
+    return Math.ceil(this.repository
+    .getProducts(this.selectedCategory).length / this.productsPerPage)
     }
 
 }
