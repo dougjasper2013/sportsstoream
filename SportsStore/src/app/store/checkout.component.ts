@@ -13,8 +13,8 @@ export class CheckoutComponent {
     orderSent: boolean = false;
     submitted: boolean = false;
 
-    public repository!: OrderRepository;
-    public order!: Order;
+    constructor(public repository: OrderRepository,
+        public order: Order) {}
 
     submitOrder(form: NgForm) {
         this.submitted = true;
